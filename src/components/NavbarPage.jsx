@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import HomeIcons from '../../public/home-icons.png'
 import ProductsIcons from '../../public/products-icons.png'
 import PlusIcons from '../../public/plus-icons.png'
-import { Link } from 'react-router-dom'
 
 const NavbarPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {

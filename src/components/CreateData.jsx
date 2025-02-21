@@ -56,7 +56,7 @@ const CreateData = () => {
 
           <div className='w-full'>
             <label className='block text-gray-700 font-medium mb-1'>Цена</label>
-            <input ref={priceRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="number" placeholder='$ 0' required />
+            <input ref={priceRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="number" placeholder='0 sum' required />
           </div>
 
           <div className='w-full'>
