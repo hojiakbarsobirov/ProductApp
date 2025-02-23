@@ -9,6 +9,15 @@ const CreateData = () => {
   const additionRef = useRef(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [price, setPrice] = useState('');
+
+  const formatPrice = (value) => {
+    return value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  };
+
+  const handlePriceChange = (e) => {
+    setPrice(formatPrice(e.target.value));
+  };
 
   const createData = async (e) => {
     e.preventDefault();
@@ -17,22 +26,22 @@ const CreateData = () => {
     const newData = {
       img: imgRef.current.value,
       title: titleRef.current.value,
-      price: priceRef.current.value,
+      price: price.replace(/\s/g, ''), // JSON uchun formatlash
       addition: additionRef.current.value,
     };
 
     try {
       await AxiosInstance.post('products', newData);
-      console.log('Yangi mahsulot yaratildi');
+      console.log('Новый продукт создан');
 
       imgRef.current.value = "";
       titleRef.current.value = "";
-      priceRef.current.value = "";
+      setPrice("");
       additionRef.current.value = "";
 
       navigate('/');
     } catch (error) {
-      console.error('Xatolik yuz berdi:', error);
+      console.error('Произошла ошибка:', error);
     } finally {
       setLoading(false);
     }
@@ -56,7 +65,14 @@ const CreateData = () => {
 
           <div className='w-full'>
             <label className='block text-gray-700 font-medium mb-1'>Цена</label>
-            <input ref={priceRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="number" placeholder='0 sum' required />
+            <input
+              className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500'
+              type="text"
+              placeholder='0 руб.'
+              value={price}
+              onChange={handlePriceChange}
+              required
+            />
           </div>
 
           <div className='w-full'>
@@ -65,7 +81,7 @@ const CreateData = () => {
           </div>
 
           <div className='w-full flex justify-end gap-4'>
-            <button type='button' className='bg-gray-200 text-gray-700 font-medium rounded-lg px-5 py-2 hover:bg-gray-300 transition' disabled={loading}>Отмена</button>
+            <button type='button' onClick={() => navigate('/')} className='bg-gray-200 text-gray-700 font-medium rounded-lg px-5 py-2 hover:bg-gray-300 transition' disabled={loading}>Отмена</button>
             <button type='submit' className={`bg-purple-600 text-white font-medium rounded-lg px-5 py-2 transition flex items-center justify-center ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-purple-700'}`} disabled={loading}>
               {loading ? (
                 <>

@@ -23,14 +23,14 @@ const ProductsPage = () => {
   };
 
   return (
-    <section className='w-full h-auto py-10 flex flex-wrap justify-center items-center gap-7 px-4 md:px-10'>
+    <section className='w-full h-auto py-10 flex flex-wrap justify-center items-center gap-5 px-4 md:px-10'>
       {data?.map((item) => (
         <div
           data-aos="fade-up"
           key={item.id}
-          className='shadow-lg w-full sm:w-[320px] md:w-[340px] lg:w-[300px] h-[450px] rounded-lg p-4 bg-white border border-gray-200 flex flex-col justify-between'
+          className='shadow-lg w-full sm:w-[280px] md:w-[300px] lg:w-[280px] h-[420px] rounded-lg p-3 bg-white border border-gray-200 flex flex-col justify-between'
         >
-          <div className='w-full h-[250px] rounded-md flex justify-center items-center overflow-hidden'>
+          <div className='w-full h-[220px] rounded-md flex justify-center items-center overflow-hidden'>
             <img className='w-full h-full object-contain' src={item.img} alt={item.title} />
           </div>
           <div className='flex flex-col flex-grow justify-between'>
@@ -39,8 +39,8 @@ const ProductsPage = () => {
                 <h2 className='font-semibold text-lg truncate w-full whitespace-nowrap overflow-hidden overflow-ellipsis'>
                   {item.title}
                 </h2>
-                <div className='flex justify-center w-[200px] items-center bg-purple-100 px-4 py-1 rounded-full'>
-                  <p className='text-purple-600 font-semibold'>{item.price} sum</p>
+                <div className='flex justify-center w-[180px] items-center bg-purple-100 px-3 py-1 rounded-full'>
+                  <p className='text-purple-600 text-sm font-medium'>{item.price} sum</p>
                 </div>
               </div>
               <p className='text-sm text-gray-600 mt-2 line-clamp-2 overflow-hidden text-ellipsis' style={{
@@ -52,7 +52,7 @@ const ProductsPage = () => {
               </p>
             </div>
             <div className='w-full h-12 mt-4'>
-              <button onClick={() => getNavigate(item.id)} className='w-full h-full bg-gray-50 text-black rounded-md hover:bg-gray-100 font-semibold transition-all'>
+              <button onClick={() => getNavigate(item.id)} className='w-full h-full bg-gray-50 text-black rounded-md hover:bg-gray-200 font-semibold transition-all'>
                 Подробнее
               </button>
             </div>
