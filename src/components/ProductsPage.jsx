@@ -18,6 +18,10 @@ const ProductsPage = () => {
     fetchData();
   }, []);
 
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('ru-RU').format(price);
+  };
+
   const getNavigate = (id) => {
     navigate(`/product/${id}`);
   };
@@ -40,7 +44,9 @@ const ProductsPage = () => {
                   {item.title}
                 </h2>
                 <div className='flex justify-center w-[180px] items-center bg-purple-100 px-3 py-1 rounded-full'>
-                  <p className='text-purple-600 text-sm font-medium'>{item.price} sum</p>
+                  <p className='text-purple-600 text-sm font-medium'>
+                    {formatPrice(item.price)} cум
+                  </p>
                 </div>
               </div>
               <p className='text-sm text-gray-600 mt-2 line-clamp-2 overflow-hidden text-ellipsis' style={{

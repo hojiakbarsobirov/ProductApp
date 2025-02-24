@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import NavbarPage from "./components/NavbarPage";
-import AxiosInstance from "./components/AxiosInstance";
 import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
 import AOS from "aos";
@@ -10,6 +9,7 @@ import SinglePage from "./components/SinglePage";
 import CartPage from "./components/CartPage";
 import SellectedPage from "./components/SellectedPage";
 import ProductsPage from "./components/ProductsPage";
+import i18n from "./locales/i18n";
 
 function App() {
   const [cart, setCart] = useState([]);
