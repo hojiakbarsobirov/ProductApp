@@ -28,7 +28,7 @@ const SearchPage = () => {
     : [];
 
   return (
-    <section className={`w-full flex flex-col items-center ${isFocused ? 'h-screen bg-gray-100 fixed inset-0 z-50' : 'h-20'}`}>
+    <section className={`w-full pt-4 flex flex-col items-center ${isFocused ? 'h-screen bg-gray-100 fixed inset-0 z-50' : 'h-20'}`}>
       <div className='w-[90%] h-16 flex items-center relative transition-all duration-300'>
         {isFocused && (
           <button

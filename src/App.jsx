@@ -32,7 +32,7 @@ function App() {
         <Route path="/create-data" element={<CreateData />} />
         <Route path="/cart" element={<CartPage cart={cart} setCart={setCart} />} />
         <Route path="/selected" element={<SellectedPage />} />
-        <Route path="/product/:id" element={<SinglePage addToCart={addToCart} />} /> {/* ✅ To‘g‘ri path */}
+        <Route path="/product/:id" element={<SinglePage addToCart={addToCart} />} />
       </Routes>
     </>
   );
