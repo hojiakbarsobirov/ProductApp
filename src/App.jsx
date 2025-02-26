@@ -9,7 +9,7 @@ import SinglePage from "./components/SinglePage";
 import CartPage from "./components/CartPage";
 import SellectedPage from "./components/SellectedPage";
 import ProductsPage from "./components/ProductsPage";
-import i18n from "./locales/i18n";
+import './locales/I18n'
 
 function App() {
   const [cart, setCart] = useState([]);
