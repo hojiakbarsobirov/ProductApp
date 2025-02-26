@@ -77,19 +77,19 @@ const SinglePage = ({ addToCart }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-      <div className="bg-white w-full max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto max-h-[90vh] rounded-lg shadow-lg flex flex-col md:flex-row overflow-hidden">
+      <div className="bg-white w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] h-auto max-h-[85vh] rounded-lg shadow-lg flex flex-col md:flex-row overflow-hidden">
         <div className="w-full md:w-1/2 flex justify-center items-center p-4 md:p-6 bg-gray-100">
-          <img className="w-full h-auto max-h-[300px] md:max-h-[400px] object-contain" src={product.img} alt={product.title} />
+          <img className="w-full h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[350px] object-contain" src={product.img} alt={product.title} />
         </div>
         <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col justify-between">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-gray-800">{product.title}</h2>
-            <p className="text-gray-600 mt-2 md:mt-3 text-sm md:text-base">{product.addition}</p>
-            <div className="text-xl md:text-2xl font-semibold text-purple-600 mt-3 md:mt-5">${product.price}</div>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">{product.title}</h2>
+            <p className="text-gray-600 mt-2 md:mt-3 text-xs sm:text-sm md:text-base">{product.addition}</p>
+            <div className="text-lg sm:text-xl md:text-2xl font-semibold text-purple-600 mt-3 md:mt-5">${product.price}</div>
           </div>
           <div className="flex flex-col gap-2 md:gap-3 mt-4 md:mt-6">
             <button
-              className={`w-full py-2 md:py-3 rounded-lg transition text-base md:text-lg font-semibold ${
+              className={`w-full py-2 sm:py-3 rounded-lg transition text-sm sm:text-base md:text-lg font-semibold ${
                 isAdding ? "bg-gray-400 cursor-not-allowed" : "bg-purple-600 hover:bg-purple-700 text-white"
               }`}
               onClick={handleAddToCart}
@@ -98,7 +98,7 @@ const SinglePage = ({ addToCart }) => {
               {isAdding ? `⏳ ${t("adding")}` : `🛒 ${t("add_to_cart")}`}
             </button>
             <button
-              className={`w-full py-2 md:py-3 rounded-lg transition text-base md:text-lg font-semibold ${
+              className={`w-full py-2 sm:py-3 rounded-lg transition text-sm sm:text-base md:text-lg font-semibold ${
                 isDeleting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 text-white"
               }`}
               onClick={handleDeleteProduct}
@@ -108,7 +108,7 @@ const SinglePage = ({ addToCart }) => {
             </button>
             <button
               onClick={() => navigate(-1)}
-              className="w-full py-2 md:py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-base md:text-lg font-semibold"
+              className="w-full py-2 sm:py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-sm sm:text-base md:text-lg font-semibold"
             >
               ❌ {t("close")}
             </button>
