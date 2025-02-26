@@ -97,21 +97,23 @@ const SinglePage = ({ addToCart }) => {
             >
               {isAdding ? `⏳ ${t("adding")}` : `🛒 ${t("add_to_cart")}`}
             </button>
-            <button
-              className={`w-full py-2 sm:py-3 rounded-lg transition text-sm sm:text-base md:text-lg font-semibold ${
-                isDeleting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 text-white"
-              }`}
-              onClick={handleDeleteProduct}
-              disabled={isDeleting}
-            >
-              {isDeleting ? `⏳ ${t("deleting")}` : `🗑 ${t("delete_product")}`}
-            </button>
-            <button
-              onClick={() => navigate(-1)}
-              className="w-full py-2 sm:py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-sm sm:text-base md:text-lg font-semibold"
-            >
-              ❌ {t("close")}
-            </button>
+            <div className="flex gap-2">
+              <button
+                className={`w-1/2 py-2 sm:py-2.5 rounded-lg transition text-sm sm:text-base font-semibold ${
+                  isDeleting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 text-white"
+                }`}
+                onClick={handleDeleteProduct}
+                disabled={isDeleting}
+              >
+                {isDeleting ? `⏳ ${t("deleting")}` : `🗑 ${t("delete_product")}`}
+              </button>
+              <button
+                onClick={() => navigate(-1)}
+                className="w-1/2 py-2 sm:py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-sm sm:text-base font-semibold"
+              >
+                ❌ {t("close")}
+              </button>
+            </div>
           </div>
         </div>
       </div>
