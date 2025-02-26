@@ -25,7 +25,15 @@ const en = {
   "URL изображения": "Image URL",
   "Создание...": "Creating...",
   "Создать продукт": "Create product",
-  "Отмена": "Cancel"
+  "Отмена": "Cancel",
+  "loading": "Loading",
+  "product_not_found": "Product not found",
+  "adding": "Adding...",
+  "add_to_cart": "Add to cart",
+  "deleting": "Deleting...",
+  "delete_product": "Delete product",
+  "close": "Close",
+   "details": "More details"
 };
 
 export default en;

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import AxiosInstance from "./AxiosInstance";
 
 const SinglePage = ({ addToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -20,7 +23,7 @@ const SinglePage = ({ addToCart }) => {
           setTimeout(() => navigate(-1), 2000);
         }
       } catch (error) {
-        console.error("Произошла ошибка:", error);
+        console.error("Error fetching product:", error);
         setProduct(null);
         setTimeout(() => navigate(-1), 2000);
       } finally {
@@ -42,10 +45,24 @@ const SinglePage = ({ addToCart }) => {
     navigate(-1);
   };
 
+  const handleDeleteProduct = async () => {
+    if (!product) return;
+
+    setIsDeleting(true);
+    try {
+      await AxiosInstance.delete(`products/${id}`);
+      navigate(-1);
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl">
-        ⏳ Загрузка...
+        ⏳ {t("loading")}...
       </div>
     );
   }
@@ -53,7 +70,7 @@ const SinglePage = ({ addToCart }) => {
   if (!product) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 text-red-500 text-xl">
-        ❌ Товар не найден
+        ❌ {t("product_not_found")}
       </div>
     );
   }
@@ -78,13 +95,22 @@ const SinglePage = ({ addToCart }) => {
               onClick={handleAddToCart}
               disabled={isAdding}
             >
-              {isAdding ? "⏳ Добавляется..." : "🛒 Добавить в корзину"}
+              {isAdding ? `⏳ ${t("adding")}` : `🛒 ${t("add_to_cart")}`}
+            </button>
+            <button
+              className={`w-full py-2 md:py-3 rounded-lg transition text-base md:text-lg font-semibold ${
+                isDeleting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 text-white"
+              }`}
+              onClick={handleDeleteProduct}
+              disabled={isDeleting}
+            >
+              {isDeleting ? `⏳ ${t("deleting")}` : `🗑 ${t("delete_product")}`}
             </button>
             <button
               onClick={() => navigate(-1)}
               className="w-full py-2 md:py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-base md:text-lg font-semibold"
             >
-              ❌ Закрыть
+              ❌ {t("close")}
             </button>
           </div>
         </div>

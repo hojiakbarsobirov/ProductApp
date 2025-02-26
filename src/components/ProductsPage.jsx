@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AxiosInstance from './AxiosInstance';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ProductsPage = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -59,7 +61,7 @@ const ProductsPage = () => {
             </div>
             <div className='w-full h-12 mt-4'>
               <button onClick={() => getNavigate(item.id)} className='w-full h-full bg-gray-50 text-black rounded-md hover:bg-gray-200 font-semibold transition-all'>
-                Подробнее
+                {t('details')}
               </button>
             </div>
           </div>

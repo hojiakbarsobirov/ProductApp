@@ -25,7 +25,15 @@ const uz = {
   "URL изображения": "Rasm URL manzili",
   "Создание...": "Yaratilmoqda...",
   "Создать продукт": "Mahsulot yaratish",
-  "Отмена": "Bekor qilish"
+  "Отмена": "Bekor qilish",
+  "loading": "Yuklanmoqda",
+  "product_not_found": "Mahsulot topilmadi",
+  "adding": "Qo‘shilmoqda...",
+  "add_to_cart": "Savatchaga qo‘shish",
+  "deleting": "O‘chirilyapti...",
+  "delete_product": "Mahsulotni o‘chirish",
+  "close": "Yopish",
+  "details": "Batafsil"
 };
 
 export default uz;
