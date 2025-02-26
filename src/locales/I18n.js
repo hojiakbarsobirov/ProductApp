@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import uz from './Uz';
-import ru from './Ru';
-import en from './En';
+import uz from './Uz.js';
+import ru from './Ru.js';
+import en from './En.js';
 
 i18n
   .use(initReactI18next)
