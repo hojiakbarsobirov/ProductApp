@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import AxiosInstance from './AxiosInstance';
 
 const CreateData = () => {
+  const { t } = useTranslation();
   const imgRef = useRef(null);
   const titleRef = useRef(null);
   const priceRef = useRef(null);
@@ -32,7 +34,7 @@ const CreateData = () => {
 
     try {
       await AxiosInstance.post('products', newData);
-      console.log('Новый продукт создан');
+      console.log(t('Новый продукт создан'));
 
       imgRef.current.value = "";
       titleRef.current.value = "";
@@ -41,7 +43,7 @@ const CreateData = () => {
 
       navigate('/');
     } catch (error) {
-      console.error('Произошла ошибка:', error);
+      console.error(t('Произошла ошибка'), error);
     } finally {
       setLoading(false);
     }
@@ -49,26 +51,26 @@ const CreateData = () => {
 
   return (
     <section className='w-full min-h-screen py-10 flex flex-col gap-8 items-center px-4'>
-      <h2 className='font-bold text-purple-600 text-3xl md:text-4xl text-center'>Создать новый продукт</h2>
+      <h2 className='font-bold text-purple-600 text-3xl md:text-4xl text-center'>{t('Создать новый продукт')}</h2>
 
       <div className='bg-white w-full max-w-lg shadow-lg h-auto py-6 px-6 rounded-xl'>
         <form className='w-full flex flex-col gap-6' onSubmit={createData}>
           <div className='w-full'>
-            <label className='block text-gray-700 font-medium mb-1'>Название продукта</label>
-            <input ref={titleRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="text" placeholder='Введите название продукта' required />
+            <label className='block text-gray-700 font-medium mb-1'>{t('Название продукта')}</label>
+            <input ref={titleRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="text" placeholder={t('Введите название продукта')} required />
           </div>
 
           <div className='w-full'>
-            <label className='block text-gray-700 font-medium mb-1'>Описание</label>
-            <textarea ref={additionRef} className='w-full h-24 border border-gray-300 rounded-lg px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-purple-500' placeholder='Опишите ваш продукт' required />
+            <label className='block text-gray-700 font-medium mb-1'>{t('Описание')}</label>
+            <textarea ref={additionRef} className='w-full h-24 border border-gray-300 rounded-lg px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-purple-500' placeholder={t('Опишите ваш продукт')} required />
           </div>
 
           <div className='w-full'>
-            <label className='block text-gray-700 font-medium mb-1'>Цена</label>
+            <label className='block text-gray-700 font-medium mb-1'>{t('Цена')}</label>
             <input
               className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500'
               type="text"
-              placeholder='0 руб.'
+              placeholder={t('0 руб.')}
               value={price}
               onChange={handlePriceChange}
               required
@@ -76,12 +78,12 @@ const CreateData = () => {
           </div>
 
           <div className='w-full'>
-            <label className='block text-gray-700 font-medium mb-1'>URL изображения</label>
-            <input ref={imgRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="url" placeholder='https://example.com/image.jpg' required />
+            <label className='block text-gray-700 font-medium mb-1'>{t('URL изображения')}</label>
+            <input ref={imgRef} className='w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-purple-500' type="url" placeholder={t('https://example.com/image.jpg')} required />
           </div>
 
           <div className='w-full flex justify-end gap-4'>
-            <button type='button' onClick={() => navigate('/')} className='bg-gray-200 text-gray-700 font-medium rounded-lg px-5 py-2 hover:bg-gray-300 transition' disabled={loading}>Отмена</button>
+            <button type='button' onClick={() => navigate('/')} className='bg-gray-200 text-gray-700 font-medium rounded-lg px-5 py-2 hover:bg-gray-300 transition' disabled={loading}>{t('Отмена')}</button>
             <button type='submit' className={`bg-purple-600 text-white font-medium rounded-lg px-5 py-2 transition flex items-center justify-center ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-purple-700'}`} disabled={loading}>
               {loading ? (
                 <>
@@ -89,10 +91,10 @@ const CreateData = () => {
                     <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
                     <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 11-8 8h4z'></path>
                   </svg>
-                  Создание...
+                  {t('Создание...')}
                 </>
               ) : (
-                'Создать продукт'
+                t('Создать продукт')
               )}
             </button>
           </div>
