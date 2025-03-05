@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {},
+    screens: {
+      sm: "480px",     // 📱 Mobile (kichik ekranlar uchun)
+      md: "768px",     // 📱 Tablet
+      lg: "1024px",    // 💻 Laptop
+      xl: "1280px",    // 🖥 Desktop
+      "2xl": "1536px", // 🖥 Katta ekranlar (masalan, keng monitorda)
+    },
   },
   plugins: [],
 }

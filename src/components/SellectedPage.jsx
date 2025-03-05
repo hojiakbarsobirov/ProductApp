@@ -8,7 +8,7 @@ const SellectedPage = () => {
     const { t } = useTranslation(); // 🔹 i18n dan tarjima qilish funksiyasini chaqiramiz
 
     return (
-        <section className='w-full h-auto py-8 flex flex-col md:flex-row justify-between items-center px-2 md:px-20 space-y-4 md:space-y-0'>
+        <section className='w-full h-auto py-8 flex flex-col lg:flex-row justify-between items-center px-2 md:px-20 space-y-4 lg:space-y-5'>
             <div className='flex gap-2 cursor-pointer'>
                 <h2 className='font-bold text-2xl md:text-3xl'>{t("Все продукты")}</h2> {/* 🔹 Tarjima qo‘shildi */}
                 <button className='text-white text-xl md:text-2xl font-bold px-3 py-1 bg-purple-500 rounded-lg'>+</button>

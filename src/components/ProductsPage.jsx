@@ -29,7 +29,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <section className='w-full h-auto py-10 flex flex-wrap justify-center items-center gap-5 px-4 md:px-10'>
+    <section className='w-full h-auto py-10 flex flex-wrap justify-center items-center gap-10 px-4 md:px-'>
       {data?.map((item) => (
         <div
           data-aos="fade-up"
