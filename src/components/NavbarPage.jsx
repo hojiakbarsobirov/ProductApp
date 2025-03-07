@@ -34,11 +34,11 @@ const NavbarPage = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 shadow-md w-full h-20 flex justify-between items-center px-4 sm:px-6 md:px-10 lg:px-20 bg-white z-50 transition-transform duration-300 ${
+        className={`fixed top-0 left-0 right-0 shadow-md w-full h-auto py-5 flex justify-between items-center px-4 sm:px-6 md:px-10 lg:px-20 bg-white z-50 transition-transform duration-300 ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <h1 className="text-purple-500 font-bold text-xl sm:text-2xl transition-colors duration-300 hover:text-purple-700">
+        <h1 className="text-purple-500 font-bold text-xl sm:text-3xl transition-colors duration-300 hover:text-purple-700">
           <Link to="/">{t("ProductApp")}</Link>
         </h1>
 
@@ -94,7 +94,7 @@ const NavbarPage = () => {
         </ul>
 
         <button
-          className="lg:hidden text-purple-500 text-2xl transition-transform duration-300"
+          className="lg:hidden text-purple-500 text-6xl transition-transform duration-300"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? "✕" : "☰"}
@@ -147,7 +147,7 @@ const NavbarPage = () => {
         </select>
       </ul>
 
-      <div className="w-full h-20"></div>
+      <div className="w-full lg:h-20 sm:h-32"></div>
     </>
   );
 };
